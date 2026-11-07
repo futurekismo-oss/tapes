@@ -26,13 +26,13 @@ pub fn run_hooks(
         }
 
         if !quiet {
-            println!(" - '{hook}'");
+            println!("\n - '{hook}'");
         }
 
         if let Err(err) = run_command(hook, working_dir, env_vars) {
             warn!("Hook failed: '{hook}': {err}");
             if !quiet {
-                eprintln!("   [!] Hook failed: '{hook}': {err}");
+                eprintln!("[!] Hook failed: '{hook}': {err}");
             }
             failed.push((hook.to_string(), err));
         }
@@ -92,7 +92,7 @@ fn run_lifecycle_hooks(
     }
 
     if !quiet {
-        println!("Running {stage} hooks");
+        println!("\nRunning {stage} hooks");
     }
 
     if let Err(err) = run_hooks(hooks, working_dir, env_vars, quiet) {
