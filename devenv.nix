@@ -6,8 +6,6 @@
     mold
   ];
 
-  env.RUST_LOG = "trace";
-
   scripts.bump-version.exec = ''
     exec ${pkgs.zsh}/bin/zsh -c '
       if [ -z "$1" ] || [ -z "$2" ]; then

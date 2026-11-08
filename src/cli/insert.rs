@@ -121,16 +121,16 @@ pub fn run(
     }
     info!("atomic swapped: {config_dir:?} -> {new_config_dir:?}");
 
-    println!(
-        "Inserted: {}",
-        app.active_tape.as_deref().unwrap_or_default()
-    );
-
     save_state_data(app)?;
 
     if let Some(ref path) = app.path {
         run_insert_hooks(&manifest, path, no_hooks, quiet)?;
     }
+
+    println!(
+        "\nFinished Inserting: {}",
+        app.active_tape.as_deref().unwrap_or_default()
+    );
 
     Ok(())
 }

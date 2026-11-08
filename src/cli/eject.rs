@@ -49,6 +49,8 @@ pub fn run(
     eject_tapes(app, &config_dir, &tapes_config_dir, quiet, no_hooks)?;
     app.save_current()?;
 
+    println!("\nFinished Ejecting: {}", tape_name);
+
     Ok(())
 }
 
