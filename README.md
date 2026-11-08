@@ -21,6 +21,7 @@ Rewritten to be safer, simpler and truly atomic
 [![License: GPL-3.0](https://img.shields.io/badge/License-GPL--3.0-blue.svg)](LICENSE)
 [![Rust Edition: 2024](https://img.shields.io/badge/Rust-2024-orange.svg)](Cargo.toml)
 [![Release](https://img.shields.io/github/v/release/futurekismo-oss/tapes?color=brightgreen)](https://github.com/futurekismo-oss/tapes/releases)
+[![Discord](https://live-members-count.rohansrma.me/api/discord-members?guildId=1566455702107586591&color=5865F2&label=Members&scale=1)](https://discord.gg/TVjsGzFAur)
 
 ---
 
