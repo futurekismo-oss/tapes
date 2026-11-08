@@ -24,6 +24,11 @@ Rewritten to be safer, simpler and truly atomic
 [![Discord](https://live-members-count.rohansrma.me/api/discord-members?guildId=1566455702107586591&color=5865F2&label=Members&scale=1)](https://discord.gg/TVjsGzFAur)
 
 ---
+Tapes has a Official GUI now, Thanks to [LilaccFlowerr](https://github.com/LilaccFlowerr), Check it out here, [https://github.com/LilaccFlowerr/tapes-deck](https://github.com/LilaccFlowerr/tapes-deck)
+
+***If you like the project, Mind giving it a star 🌟?***
+
+---
 
 ## Tapes in Action
 
@@ -204,7 +209,7 @@ ignore = ["wallpapers", "assets", "scripts", ".DS_Store"]
 
 
 ## Why Use Tapes?
-If you're like me and a big unixporn fan, you've definitely found yourself wanting to try new rices, however the worry of trashing your old config holds you back. Install scripts barely care; they frequentely override previous configs or just backup the entire config folder and make a new one, forcing you go to back and manually move files to fix the mess. 
+If you're like me and a big unixporn fan, you've definitely found yourself wanting to try new rices, however the worry of trashing your old config holds you back. Install scripts barely care; they frequently override previous configs or just backup the entire config folder and make a new one, forcing you go to back and manually move files to fix the mess. 
 
 Tapes aims to solve this by making trying out new rices and reverting back to your old config as frictionless as possible as while being safe and fast. Other dotfile managers have come close, but don't really give this feeling of pop in a config and pop it out as fast (this is where the name came from). The initial implementation (v1) was hasty and buggy. It was a prototype.
 
@@ -226,7 +231,7 @@ Thanks to these wonderful individuals for
 
 > [erotic-erox](https://github.com/exotic-erox) for calling out some lifecycle bugs on version 0.1.2-beta
 
-> [LilaccFlowerr](https://github.com/LilaccFlowerr) for providing the tapes showcase video and hopefully a gui in the future
+> [LilaccFlowerr](https://github.com/LilaccFlowerr) for providing the tapes showcase video and a GUI
 
 > [saksham_kumar](https://github.com/saksham_kumar) for being a contributor and writing the beloved install command
 
@@ -236,12 +241,11 @@ Thanks to these wonderful individuals for
 
 > [Marv](https://github.com/shreudi) for encouraging me to build tapes after i pitched the initial idea, without him, tapes would still be a random afternoon thought
 
-
 ---
 
 ## Roadmap
 
-- [ ] A TUI or GUI
+- [x] A GUI - [https://github.com/LilaccFlowerr/tapes-deck](https://github.com/LilaccFlowerr/tapes-deck)
 - [ ] Colored output
 - [ ] More features
 
