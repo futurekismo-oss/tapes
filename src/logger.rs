@@ -24,7 +24,7 @@ impl Log for SimpleLogger {
 
         let timestamp = format_current_time();
 
-        let log_entry = format!("[{}] [{}] - {}\n", timestamp, record.level(), record.args());
+        let log_entry = format!("[{}] [{}] {}\n", timestamp, record.level(), record.args());
 
         let stderr_allowed = match self.stderr_level.lock() {
             Ok(guard) => record.level() <= *guard,
@@ -123,7 +123,7 @@ fn setup_file_logger(log_file_path: Option<&Path>) {
         return;
     };
 
-    let _ = file.write_all(b"\n");
+    let _ = file.write_all(b"\n======\n\n");
 
     let Ok(mut guard) = LOGGER.file.lock() else {
         return;
