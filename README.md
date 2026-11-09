@@ -176,6 +176,7 @@ tapes config path   # Show location of active config file
 tapes config show   # Display current effective configuration
 ```
 
+<a id="example-config"></a>
 <details>
 <summary><b>Click to view example config.toml</b></summary>
 
@@ -224,6 +225,98 @@ Now, let's explain the terms you'll come across while using this program.
 **Atomic**: You've heard me say it a lot. It means there is no in-between; when tapes insert a tapes, it takes the targets from your `~/.config` folder, asks the tape which config it provides, and then builds an entire valid config folder called `~/.config.tapes` made up of symlinks from the tape and your previous config. It then uses the renameat linux syscall to swap your `~/.config` with `~/.config.tapes` (meaning your old config becomes `~/.config.tapes` and vice versa), and as there is no in-between state where your config is missing, it can call itself atomic, since anything before the swap can be easily rolled back by deleting `~/.config.tapes`.
 
 **Hooks**: Shell commands in the tape.toml. Tapes can run them after insert, after eject or after install. *Make sure to read these if a repo provides its own tape.toml, even though it shouldn't.*
+
+---
+
+## FAQ
+
+<details>
+<summary><b>Click to view the FAQ</b></summary>
+
+<br>
+
+**How can I get tapes?**
+
+See [Installation](#installation). The quickest way is the install script, or `cargo install tapes-v2` if you have Rust.
+
+**How can I make my config use tapes? / How do I make my local config a tape?**
+
+A tape is just a folder with your configs and a `tape.toml`. Copy the folders you care about (`hypr`, `nvim`, ...) into a new folder and install it:
+
+```bash
+tapes install https://github.com/some_user/cyberpunk --name cyberpunk 
+tapes insert cyberpunk
+
+tapes install ~/cyberpunk --name cyberpunk
+tapes insert cyberpunk
+```
+
+Tapes generates a tape.toml for you, which you have to configure to fit your needs, they contain hooks see [example config](#example-config)
+
+**Can I use it with my current rice?**
+
+Yes you can, if your rice is in your .config, it can completely be used with your own rice. you just swap it out with tapes eject or tapes insert your-rice (if you made it a tape)
+
+**Do I need to back up my config before using tapes?**
+
+It is highly recomended to make a backup. Even though tapes is built to be safe, it is still prone to errors.
+
+**Does having multiple configs overlap and erase my config?**
+
+No. For every folder or file the tape provides (e.g. `hypr`), the tape's version is used while it's inserted. Everything else in your `~/.config` that the tape doesn't provide (e.g. `chromium`) stays as it is. Nothing is deleted, and on eject you get your original config back. Only one tape can be inserted at a time.
+
+**What does tapes support exactly? Quickshell?**
+
+Anything that lives in `~/.config`. Tapes doesnt look at what the folders are, all it does is replace whats in `~/.tapes` and copies it over to `~/.config`. While ofcourse keeping a copy of your previous config.
+
+**Does it only work on Arch?**
+
+No, it works on any distro, not just arch.
+
+**How does it work for Nix and NixOS?**
+
+You can install tapes with the flake (`nix profile install github:futurekismo-oss/tapes`). Tapes only needs `~/.config` to be a real directory. If `~/.config` itself is a symlink, `tapes insert` refuses to run.
+
+**How would I update my dots?**
+
+Tapes symlinks the files from `~/.tapes/<name>`, so edits you make while a tape is inserted go straight into the tape. To pull in a newer version from a repo, eject first and reinstall with `--force`:
+
+```bash
+tapes eject
+tapes install https://github.com/some_user/cyberpunk --name cyberpunk --force
+```
+
+The old copy is kept in `~/.tapes/cyberpunk.bak` (see `backup_on_force` in the [config](#global-configuration)). To update tapes itself, re-run the install script.
+
+You could also remove the tape in `~/.tapes` and installing it again from github or any other git place.
+
+**How is this different from chezmoi or stow?**
+
+Chezmoi and stow manage *one* set of dotfiles: stow symlinks the files from your dotfiles repo into place, chezmoi copies them from a source directory and adds things like templates and encryption. Neither is built for trying out other people's rices and going back afterwards. Tapes makes it so you can make infinite so called tapes, and then swap between them freely, whenever you feel like it.
+
+**How is this different from Rice Cooker?**
+
+Rice cooker is a visual tool that lets you view other peoples rices. It only supports Arch with Hyprland and Quickshell-based rices, and it works by pointing Quickshell at the selected rice. Tapes switches out your whole ~/.config, meaning it isnt just stuck to hyprland or quickshell, meaning it can switch your KDE rices (if most of it is in ~/.config that is) or any other WM/DE that has its rices in ~/.config. it can even change your starship if you wish it to do so.
+
+**Does tapes have AI?**
+
+No. straight to the point, it is completely human coded.
+
+**Where are the tapes stored?**
+
+Its stored in `~/.tapes`, here you can find all your tapes and what config files it hits.
+
+**Does tapes have a config file?**
+
+Yes, an optional one at `~/.local/share/tapes/config.toml`. Create it with `tapes config init`, see [Global Configuration](#global-configuration).
+
+**I have an issue, what should I do?**
+
+Re-run the command with `--logging` and [open an issue](https://github.com/futurekismo-oss/tapes/issues/new) with the output, or ask in the [Discord](https://discord.gg/TVjsGzFAur). If an insert or eject fails halfway, your original config is untouched. In the worst case, delete `~/.config` and rename `~/.config.tapes` back to `~/.config`.
+
+Usually its a hook issue, check that first. If its not a hook issue, then go to `~/.local/share/tapes/tapes.log`, here you can find the logs. you can share them with us in the [Discord](https://discord.gg/TVjsGzFAur) if an insert or eject fails halfway, your original config is untouched, so dont be scared that youll lose your config.
+
+</details>
 
 ---
 
