@@ -245,7 +245,7 @@ Now, let's explain the terms you'll come across while using this program.
 
 **How can I get tapes?**
 
-See [Installation](#installation). The quickest way is the install script, or `cargo install tapes-v2` if you have Rust.
+See [Installation](#installation). The quickest way is the install script, or `cargo install tapes-v2`/
 
 **How can I make my config use tapes? / How do I make my local config a tape?**
 
@@ -259,15 +259,15 @@ tapes install ~/cyberpunk --name cyberpunk
 tapes insert cyberpunk
 ```
 
-Tapes generates a tape.toml for you, which you have to configure to fit your needs, they contain hooks see [example config](#example-config)
+Tapes generates a tape.toml for you, which you have to configure to fit your needs, they contain hooks, see [example config](#example-config) for more info.
 
 **Can I use it with my current rice?**
 
-Yes you can, if your rice is in your .config, it can completely be used with your own rice. you just swap it out with tapes eject or tapes insert your-rice (if you made it a tape)
+Yes you can, if your rice is in your .config, it can completely be used with your own rice. you just swap it out with `tapes eject` or `tapes insert your-rice` (if you made it a tape)
 
 **Do I need to back up my config before using tapes?**
 
-It is highly recommended to make a backup. Even though tapes is built to be safe, it is still prone to errors.
+It is highly recommended to make a backup. Even though tapes is built to be safe, it is still prone to errors as it is currently in beta.
 
 **Does having multiple configs overlap and erase my config?**
 
@@ -275,15 +275,15 @@ No. For every folder or file the tape provides (e.g. `hypr`), the tape's version
 
 **What does tapes support exactly? Quickshell?**
 
-Anything that lives in `~/.config`. Tapes doesnt look at what the folders are, all it does is replace whats in `~/.tapes` and copies it over to `~/.config`. While ofcourse keeping a copy of your previous config.
+Anything that lives in `~/.config`. Tapes doesn't look at what the folders are, all it does is replace what is in `~/.tapes` and copies it over to `~/.config`. While keeping a copy of your previous config ofcourse.
 
 **Does it only work on Arch?**
 
-No, it works on any distro, not just arch.
+No, it works on any distro, not just Arch. However an important consideration is that tapes only supports Linux as it relies on a linux syscall for atomic swapping of folder. Mac, Windows, and BSD are not supported.
 
 **How does it work for Nix and NixOS?**
 
-You can install tapes with the flake (`nix profile install github:futurekismo-oss/tapes`). Tapes only needs `~/.config` to be a real directory. If `~/.config` itself is a symlink, `tapes insert` refuses to run.
+You can install tapes with the flake (`nix profile install github:futurekismo-oss/tapes`) imperatively (Try to do it the declaratively way, I trust you know how, if you don't read the Nixos Wiki). Tapes only needs `~/.config` to be a real directory. If `~/.config` itself is a symlink, `tapes insert` refuses to run. Tapes should also run fine with home-manager as it doesn't touch inside the folder themselves, however home-manager might get confused if you rebuild while a tape inserted.
 
 **How would I update my dots?**
 
@@ -296,7 +296,9 @@ tapes install https://github.com/some_user/cyberpunk --name cyberpunk --force
 
 The old copy is kept in `~/.tapes/cyberpunk.bak` (see `backup_on_force` in the [config](#global-configuration)). To update tapes itself, re-run the install script.
 
-You could also remove the tape in `~/.tapes` and installing it again from github or any other git place.
+Keep in mind, a simple `git pull` might also work
+
+You could also remove the tape in `~/.tapes` and installing it again from github or any other git place. 
 
 **How is this different from chezmoi or stow?**
 
@@ -306,13 +308,15 @@ Chezmoi and stow manage *one* set of dotfiles: stow symlinks the files from your
 
 Rice cooker is a visual tool that lets you view other peoples rices. It only supports Arch with Hyprland and Quickshell-based rices, and it works by pointing Quickshell at the selected rice. Tapes switches out your whole ~/.config, meaning it isnt just stuck to hyprland or quickshell, meaning it can switch your KDE rices (if most of it is in ~/.config that is) or any other WM/DE that has its rices in ~/.config. it can even change your starship if you wish it to do so.
 
-**Does tapes have AI?**
+Ofcourse, Inferior to rice cooker, tapes doesn't have curated rices, something the team is actively working on.
 
-No. straight to the point, it is completely human coded.
+**Is Tapes Vibecoded AI slop?**
+
+No. straight to the point, It is completely human coded. 2 months of stress and testing inorder to ensure that it is truly atomic
 
 **Where are the tapes stored?**
 
-Its stored in `~/.tapes`, here you can find all your tapes and what config files it hits.
+Its stored in `~/.tapes`, here you can find all your tapes and what config files (targets) it hits.
 
 **Does tapes have a config file?**
 
@@ -322,7 +326,7 @@ Yes, an optional one at `~/.local/share/tapes/config.toml`. Create it with `tape
 
 Re-run the command with `--logging` and [open an issue](https://github.com/futurekismo-oss/tapes/issues/new) with the output, or ask in the [Discord](https://discord.gg/TVjsGzFAur). If an insert or eject fails halfway, your original config is untouched. In the worst case, delete `~/.config` and rename `~/.config.tapes` back to `~/.config`.
 
-Usually its a hook issue, check that first. If its not a hook issue, then go to `~/.local/share/tapes/tapes.log`, here you can find the logs. you can share them with us in the [Discord](https://discord.gg/TVjsGzFAur) if an insert or eject fails halfway, your original config is untouched, so dont be scared that youll lose your config.
+Usually it's a hook issue, check that first. If it's not a hook issue, then go to `~/.local/share/tapes/tapes.log`, here you can find the logs. you can share them with us in the [Discord](https://discord.gg/TVjsGzFAur) if an insert or eject fails halfway, your original config is untouched, so don't be scared that you'll lose your config.
 
 </details>
 
