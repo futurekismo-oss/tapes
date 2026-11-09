@@ -27,7 +27,7 @@ Rewritten to be safer, simpler and truly atomic
 
 
 ---
-Tapes has a Official GUI now, Thanks to [LilaccFlowerr](https://github.com/LilaccFlowerr), Check it out here, [https://github.com/LilaccFlowerr/tapes-deck](https://github.com/LilaccFlowerr/tapes-deck)
+Tapes has a Official GUI now, Check it out here, [https://github.com/LilaccFlowerr/tapes-deck](https://github.com/LilaccFlowerr/tapes-deck)
 
 ***If you like the project, Mind giving it a star 🌟?*** 
 
