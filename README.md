@@ -206,6 +206,14 @@ post_eject = [
 ignore = ["wallpapers", "assets", "scripts", ".DS_Store"]
 ```
 
+The following environment variables are available in hooks:
+
+| Variable | Value |
+|---|---|
+| `$TAPE_NAME` | Name of the tape (from `tape.toml`) |
+| `$TAPE_DIR` | Path of the tape, e.g. `~/.tapes/cyberpunk` |
+| `$CONFIG_DIR` | Your config folder, normally `~/.config` |
+
 </details>
 
 ---
