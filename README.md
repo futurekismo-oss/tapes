@@ -267,7 +267,7 @@ Yes you can, if your rice is in your .config, it can completely be used with you
 
 **Do I need to back up my config before using tapes?**
 
-It is highly recomended to make a backup. Even though tapes is built to be safe, it is still prone to errors.
+It is highly recommended to make a backup. Even though tapes is built to be safe, it is still prone to errors.
 
 **Does having multiple configs overlap and erase my config?**
 
