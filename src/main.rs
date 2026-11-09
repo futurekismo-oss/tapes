@@ -39,8 +39,17 @@ fn main() -> Result<(), anyhow::Error> {
             name,
             path,
             dry_run,
+            yes,
             no_hooks,
-        } => insert::run(&mut load_app()?, name, path, dry_run, no_hooks, cli.quiet)?,
+        } => insert::run(
+            &mut load_app()?,
+            name,
+            path,
+            dry_run,
+            no_hooks,
+            yes,
+            cli.quiet,
+        )?,
         Commands::Status => status::show(load_app()?, cli.verbose)?,
         Commands::Eject { dry_run, no_hooks } => {
             eject::run(&mut load_app()?, dry_run, no_hooks, cli.quiet)?

@@ -27,6 +27,7 @@ pub fn run(
     path: Option<PathBuf>,
     dry_run: bool,
     no_hooks: bool,
+    yes: bool,
     quiet: bool,
 ) -> Result<(), anyhow::Error> {
     info!("starting insert command");
@@ -46,7 +47,7 @@ pub fn run(
     if app.active_tape.is_some() && !dry_run {
         info!("Another tape is currently inserted: {:?}", app.active_tape);
 
-        if !yes_or_no_prompt("Another tape is currently inserted.\nEject?") {
+        if !yes && !yes_or_no_prompt("Another tape is currently inserted.\nEject?") {
             bail!("Another tape is currently inserted, doing nothing, exiting");
         };
 

@@ -35,6 +35,11 @@ pub enum Commands {
         /// Plan only; touch nothing.
         #[arg(long)]
         dry_run: bool,
+
+        /// Automatically approve and run install hooks without prompting.
+        #[arg(short = 'y', long = "yes")]
+        yes: bool,
+
         /// Skip pre/post hooks.
         #[arg(long)]
         no_hooks: bool,
