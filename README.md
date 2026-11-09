@@ -249,7 +249,7 @@ Thanks to these wonderful individuals for
 
 - [x] A GUI - [https://github.com/LilaccFlowerr/tapes-deck](https://github.com/LilaccFlowerr/tapes-deck)
 - [ ] Colored output
-- [ ] More features
+- [ ] Dependencies checking
 
 ---
 
