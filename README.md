@@ -300,6 +300,10 @@ Keep in mind, a simple `git pull` might also work
 
 You could also remove the tape in `~/.tapes` and installing it again from github or any other git place. 
 
+**Do i need to have my current setup be its own tape?**
+
+No, your current setup doesnt need to be a tape. Tapes uses your current setup to be able to revert when you eject. If you want, you could see it as the base tape that doesnt need to be inserted.
+
 **How is this different from chezmoi or stow?**
 
 Chezmoi and stow manage *one* set of dotfiles: stow symlinks the files from your dotfiles repo into place, chezmoi copies them from a source directory and adds things like templates and encryption. Neither is built for trying out other people's rices and going back afterwards. Tapes makes it so you can make infinite so called tapes, and then swap between them freely, whenever you feel like it.
