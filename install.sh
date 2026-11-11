@@ -5,6 +5,7 @@ REPO="futurekismo-oss/tapes"
 BINARY_NAME="tapes"
 LEGACY_BINARY_NAME="tapes-v2"
 CONFIG_DIR="$HOME/.tapes"
+LOCAL_DIR="$HOME/.local/share/tapes"
 
 install_file() {
   local src="$1"
@@ -100,6 +101,14 @@ RELEASE_URL="https://github.com/$REPO/releases/latest/download/$TARGET_ASSET"
 
 echo "==> Preparing target and configuration directories..."
 mkdir -p "$CONFIG_DIR" "$TARGET_DIR"
+
+echo "==> Cleaning up old log files..."
+for log_file in "$LOCAL_DIR"/*.log; do
+  if [ -f "$log_file" ]; then
+    echo "==> Removing old log file: $log_file"
+    remove_file "$log_file"
+  fi
+done
 
 echo "==> Downloading $BINARY_NAME from GitHub Releases..."
 TEMP_FILE=$(mktemp)
