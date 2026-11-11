@@ -1,6 +1,6 @@
 [package]
 name = "tapes-v2"
-version = "0.1.8-beta"
+version = "0.1.8-beta.1"
 edition = "2024"
 description = "Atomic dotfiles switcher for Linux and Ricing."
 readme = "README.md"
