@@ -81,7 +81,7 @@ insert = [
 
 eject = [
   "hyprctl reload",
-  "pkll waybar",
+  "pkill waybar",
   # Tapes runs commands in the current shell session, so try to move them to the background
   "qs -c caelestia -d",  
   "notify-send 'Tapes' 'Back to caelestia'",
