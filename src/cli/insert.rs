@@ -70,7 +70,6 @@ pub fn run(
     );
 
     let targets: HashMap<String, Target> = resolve_targets(app, &new_config_dir)?;
-    info!("targets: {:#?}", targets);
 
     if dry_run {
         println!("Created {new_config_dir:?}...");
