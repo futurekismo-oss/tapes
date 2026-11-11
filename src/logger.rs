@@ -105,21 +105,29 @@ fn format_current_time() -> String {
     format!("{:02}:{:02}:{:02}", hours, minutes, seconds)
 }
 
-// Maximum size before rotating (e.g., 5 MB)
-const MAX_LOG_SIZE: u64 = 5 * 1024 * 1024;
+// Maximum log entries before rotating
+const MAXIMUM_LOG_ENTRIES: usize = 5;
 
 fn setup_file_logger(log_file_path: Option<&Path>) {
     let Some(path) = log_file_path else {
         return;
     };
 
-    if let Ok(metadata) = fs::metadata(path)
-        && metadata.len() >= MAX_LOG_SIZE
-    {
-        rotate_log_files(path);
+    let mut run_count = 0;
+    if let Ok(content) = fs::read_to_string(path) {
+        run_count = content.matches("======").count();
     }
 
-    let Ok(mut file) = OpenOptions::new().create(true).append(true).open(path) else {
+    let mut options = OpenOptions::new();
+    options.create(true).write(true);
+
+    if run_count >= MAXIMUM_LOG_ENTRIES {
+        options.truncate(true);
+    } else {
+        options.append(true);
+    }
+
+    let Ok(mut file) = options.open(path) else {
         return;
     };
 
@@ -130,14 +138,4 @@ fn setup_file_logger(log_file_path: Option<&Path>) {
     };
 
     *guard = Some(file);
-}
-
-fn rotate_log_files(base_path: &Path) {
-    let backup_path = format!("{}.bak", base_path.display());
-
-    // Delete the old .bak backup if it exists
-    let _ = fs::remove_file(&backup_path);
-
-    // Rename the current log to .bak
-    let _ = fs::rename(base_path, backup_path);
 }
