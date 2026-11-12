@@ -9,7 +9,7 @@ static CONFIG: OnceLock<Config> = OnceLock::new();
 #[derive(Serialize, Deserialize, Debug, Clone, Default)]
 pub struct Config {
     pub default_tape: Option<String>,
-    pub colored_output: bool, 
+    pub colored_output: bool,
     #[serde(default)]
     pub install: InstallConfig,
     #[serde(default)]
