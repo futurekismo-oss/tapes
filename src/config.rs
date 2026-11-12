@@ -9,6 +9,7 @@ static CONFIG: OnceLock<Config> = OnceLock::new();
 #[derive(Serialize, Deserialize, Debug, Clone, Default)]
 pub struct Config {
     pub default_tape: Option<String>,
+    pub colored_output: bool, 
     #[serde(default)]
     pub install: InstallConfig,
     #[serde(default)]
@@ -125,6 +126,7 @@ impl Config {
 
 # Default tape to insert when running `tapes insert` without arguments
 # default_tape = "my-default"
+# colored_output = true
 
 [install]
 # Clone with --depth 1 by default (set to false for full clone)
