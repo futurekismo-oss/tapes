@@ -4,6 +4,7 @@ use std::io::Write;
 use std::path::Path;
 use std::sync::Mutex;
 use std::time::SystemTime;
+use yansi::Paint;
 
 struct SimpleLogger {
     file: Mutex<Option<File>>,
@@ -24,7 +25,12 @@ impl Log for SimpleLogger {
 
         let timestamp = format_current_time();
 
-        let log_entry = format!("[{}] [{}] {}\n", timestamp, record.level(), record.args());
+        let log_entry = format!(
+            "[{}] [{}] {}\n",
+            timestamp.bold(),
+            record.level(),
+            record.args()
+        );
 
         let stderr_allowed = match self.stderr_level.lock() {
             Ok(guard) => record.level() <= *guard,
