@@ -328,6 +328,8 @@ Yes, an optional one at `~/.local/share/tapes/config.toml`. Create it with `tape
 
 **I have an issue, what should I do?**
 
+First, Make sure you're on the lastest version ( `tapes --version` )
+
 Re-run the command with `--logging` and [open an issue](https://github.com/futurekismo-oss/tapes/issues/new) with the output, or ask in the [Discord](https://discord.gg/TVjsGzFAur). If an insert or eject fails halfway, your original config is untouched. In the worst case, delete `~/.config` and rename `~/.config.tapes` back to `~/.config`.
 
 Usually it's a hook issue, check that first. If it's not a hook issue, then go to `~/.local/share/tapes/tapes.log`, here you can find the logs. you can share them with us in the [Discord](https://discord.gg/TVjsGzFAur) if an insert or eject fails halfway, your original config is untouched, so don't be scared that you'll lose your config.
