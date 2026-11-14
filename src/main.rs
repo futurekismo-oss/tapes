@@ -30,8 +30,10 @@ fn main() -> Result<(), anyhow::Error> {
     let logging_path = tapes_data_path.join("tapes.log");
 
     logger::init(cli.logging, Some(&logging_path));
-
+    
     info!("Tapes startup");
+    info!("Tapes version: {}", env!("CARGO_PKG_VERSION"));
+       
 
     match cli.command {
         Commands::Show { name } => show::run(name)?,
