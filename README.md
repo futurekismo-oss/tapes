@@ -245,7 +245,7 @@ Now, let's explain the terms you'll come across while using this program.
 
 **How can I get tapes?**
 
-See [Installation](#installation). The quickest way is the install script, or `cargo install tapes-v2`/
+See [Installation](#installation). The quickest way is the install script, or `cargo install tapes-v2`
 
 **How can I make my config use tapes? / How do I make my local config a tape?**
 
