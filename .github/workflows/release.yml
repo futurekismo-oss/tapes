@@ -58,3 +58,50 @@ jobs:
             --verify-tag \
             --title "Release $GITHUB_REF_NAME" \
             --generate-notes
+
+  publish:
+    name: Publish to crates.io
+    needs: build
+    if: github.repository == 'futurekismo-oss/tapes'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Verify release version
+        shell: python
+        run: |
+          import os
+          import tomllib
+
+          with open("Cargo.toml", "rb") as file:
+              version = tomllib.load(file)["package"]["version"]
+
+          expected = f"v{version}"
+          actual = os.environ["GITHUB_REF_NAME"]
+          if actual != expected:
+              raise SystemExit(f"Tag {actual!r} does not match {expected!r}")
+
+      - name: Install build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y mold clang
+
+      - name: Set up Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Authenticate to crates.io
+        id: crates-auth
+        uses: rust-lang/crates-io-auth-action@v1
+
+      - name: Publish crate
+        run: cargo publish --locked
+        env:
+          CARGO_REGISTRY_TOKEN: ${{ steps.crates-auth.outputs.token }}
