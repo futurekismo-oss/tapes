@@ -49,9 +49,8 @@ jobs:
           RAW_BIN="tapes-x86_64-unknown-linux-gnu"
           ARCHIVE_NAME="${RAW_BIN}-${GITHUB_REF_NAME}"
 
-          cp target/release/tapes "$RAW_BIN"
-
           mkdir -p "$ARCHIVE_NAME"
+          cp target/release/tapes "$RAW_BIN"
           cp target/release/tapes "$ARCHIVE_NAME/"
           tar -czf "${ARCHIVE_NAME}.tgz" "$ARCHIVE_NAME"
 
