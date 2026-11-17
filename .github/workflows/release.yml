@@ -1,6 +1,7 @@
 name: Release
 
 on:
+  workflow_dispatch:
   push:
     tags:
       - "v*"
@@ -43,6 +44,7 @@ jobs:
         run: cargo build --locked --release --verbose
 
       - name: Package and publish release
+        if: github.event_name == 'push'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
@@ -76,6 +78,7 @@ jobs:
           persist-credentials: false
 
       - name: Verify release version
+        if: github.event_name == 'push'
         shell: python
         run: |
           import os
@@ -101,7 +104,14 @@ jobs:
         id: crates-auth
         uses: rust-lang/crates-io-auth-action@v1
 
+      - name: Verify crate publication
+        if: github.event_name == 'workflow_dispatch'
+        run: cargo publish --locked --dry-run
+        env:
+          CARGO_REGISTRY_TOKEN: ${{ steps.crates-auth.outputs.token }}
+
       - name: Publish crate
+        if: github.event_name == 'push'
         run: cargo publish --locked
         env:
           CARGO_REGISTRY_TOKEN: ${{ steps.crates-auth.outputs.token }}
