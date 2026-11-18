@@ -431,7 +431,7 @@ Usually it's a hook issue, check that first. If it's not a hook issue, then go t
 
 ## Contributing
 
-Contributions are welcome. See [Contributing.md](Contributing.md) for the guidelines.
+Contributions are welcome; see [CONTRIBUTING.md](CONTRIBUTING.md) for the guidelines.
 
 ---
 
