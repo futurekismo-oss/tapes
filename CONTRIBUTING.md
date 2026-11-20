@@ -2,7 +2,7 @@
 
 - `main.rs` should be an entry point and delegate everything outwards to `cli` and `ops`. Most errors should also propagate back to `main.rs`, unless a specific error needs to handle its own failure for the sake of safety.
 
-- Make sure to have `sccache` and `mold` as they are dev-dependencies
+- `sccache` is an optional dev-dependency
 
 - The default Rust style is accepted.
 

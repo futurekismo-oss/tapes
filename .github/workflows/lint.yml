@@ -23,7 +23,6 @@ concurrency:
 
 env:
   CARGO_TERM_COLOR: always
-  CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_RUSTFLAGS: "-C link-arg=-fuse-ld=mold"
   RUSTC_WRAPPER: ""
 
 jobs:
@@ -51,7 +50,7 @@ jobs:
       - name: Install build dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y mold clang
+          sudo apt-get install -y clang
 
       - name: Cache Cargo dependencies
         uses: Swatinem/rust-cache@v2
