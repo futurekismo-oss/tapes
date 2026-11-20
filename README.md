@@ -117,8 +117,8 @@ curl -fsSL https://raw.githubusercontent.com/futurekismo-oss/tapes/main/install.
 **Cargo**
 
 ```bash
-cargo install tapes-dotfiles@v0.1.10-beta.1
-cargo binstall tapes-dotfiles@v0.1.10-beta.1   # prebuilt binary
+cargo install tapes-dotfiles@v0.1.10-beta.2
+cargo binstall tapes-dotfiles@v0.1.10-beta.2   # prebuilt binary
 ```
 
 > The crate is `tapes-dotfiles`, the binary is `tapes`. The old `tapes-v2` crate is abandoned.
