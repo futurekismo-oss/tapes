@@ -3,7 +3,6 @@
 
   packages = with pkgs; [
     sccache
-    mold
   ];
 
   scripts.bump-version.exec = ''
