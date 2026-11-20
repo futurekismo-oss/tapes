@@ -1,7 +1,6 @@
 {
   rustPlatform,
   lib,
-  mold,
 }: let
   cargoToml = fromTOML (builtins.readFile ../Cargo.toml);
 in
@@ -12,10 +11,6 @@ in
     src = lib.cleanSource ../.;
 
     cargoLock.lockFile = ../Cargo.lock;
-
-    nativeBuildInputs = [
-      mold
-    ];
 
     env.RUSTC_WRAPPER = "";
 
