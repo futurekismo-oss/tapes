@@ -6,7 +6,7 @@ These guidelines are lenient in spirit, not a rigid checklist so follow the spir
 
 ## Getting Started & Workflow
 
-- **Do not push directly to `main`.** Create a branch or fork and open a pull request. If you do, don't be suprised if your commit disappears from a local push.
+- **Do not push directly to `main`.** Create a branch or fork and open a pull request. If you do, don't be surprised if your commit disappears from a local push.
 - **Match the commit style.** Check `git log` for previous commit messages to see the conventions used here. That said I did make a lot of unconventional commits in the past so try to only consider the recent ones
 - **Write tests.** Try not to ship code blind—test thoroughly. Test coverage in this repo is currently light, so adding tests is a great way to contribute.
 - **Optional tooling:** `sccache` is supported as an optional dev-dependency if you want faster and better local builds.
