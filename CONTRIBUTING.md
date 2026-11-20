@@ -21,7 +21,7 @@ These guidelines are lenient in spirit, not a rigid checklist so follow the spir
 ## Style, Safety & Simplicity
 
 - **Follow idiomatic Rust.** Standard Rust formatting and style are expected.
-- **Prioritize safety and simplicity over speed and complexity.** Safety comes first, and simple code beats clever complexity every time.
+- **Prioritize safety and simplicity over speed and complexity.** Safety comes first, and simple code beats clever complexity every time. If you have to explain with it does with comments and words, it's too complex. There are exceptions ofcourse
 - **Avoid `.clone()` and `unsafe`** unless clearly justified. *Rust is a bitch, I know*
 - **Follow Never-Nesting.** Five levels of nesting is out; even three levels starts getting painful. Return early and flatten logic where possible.
 - **Write readable code, not hieroglyphs.** Give code room to breathe, avoid clever tricks that require arcane knowledge, and follow **DRY** (Don't Repeat Yourself). Tricks are fun until you're patching them at 2 AM.
