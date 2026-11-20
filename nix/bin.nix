@@ -13,7 +13,7 @@ in
 
     src = fetchurl {
       url = "https://github.com/futurekismo-oss/tapes/releases/download/v${version}/tapes-x86_64-unknown-linux-gnu";
-      hash = "sha256-PUvzBIQblbcWvZJWgzi8sd377pOYkNsTCs4+YybcHf0=";
+      hash = "sha256-49dzbr5HhUbK5mdY8LDzV63qXljfSVe/LFIPmRws4RA=";
     };
 
     nativeBuildInputs = [autoPatchelfHook];
