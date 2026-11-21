@@ -26,8 +26,7 @@ Get it all back in one command.
 
 ## Tapes in Action
 
-https://github.com/user-attachments/assets/fc3c07b0-7eee-448a-94c5-9d560c288512
-
+https://github.com/user-attachments/assets/42851fc4-7b7a-4c7f-9224-e9e4d586bf1d
 
 ## Quickstart
 
