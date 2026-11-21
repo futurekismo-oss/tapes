@@ -102,10 +102,6 @@ eject = [
 # install = [] # also exists
 ```
 
-> [!NOTE]
-> If you install a tape from someone else's repo, read their `tape.toml` hooks before inserting. You shouldn't have to, but you should.
-
-
 ## 📦 Installation
 
 **Install script** (latest release, re-run to update)
@@ -191,7 +187,6 @@ Hook environment variables: `$TAPE_NAME`, `$TAPE_DIR`, `$CONFIG_DIR`.
 - **Tape** — a full `~/.config`-style folder (a rice, your dotfiles) with a `tape.toml`.
 - **Target** — any file or folder in the tape (like `hypr/`, `nvim/`, `.zshrc`) that gets swapped into your `~/.config`.
 - **Hooks** — shell commands run after insert, eject, or install.
-- **Atomic** — there is no in-between. Tapes builds a complete, valid config (`~/.config.tapes`) out of symlinks from the tape plus everything else you already had, then swaps it with `~/.config` via the Linux `renameat` syscall in a single instant. Everything before the swap is trivially rollable back by deleting `~/.config.tapes`.
 
 **Why it matters:** install scripts override your configs or backup the whole folder and makes a fresh one. This means you might lose your hyprland or chromium keys forcing you to lose your keybinds or have to login again to your gmail. Tapes keeps everything the tape doesn't provide and leaves your `chromium/` keys or whatever untouched. It requires one command to try out a new config and another to return back to your previous one and because it only touches `~/.config`, it works on every distro, every WM/DE as well as every rice. However tapes utilizes the linux `renameat2` syscall so it only works on linux (for now)
 
@@ -271,7 +266,7 @@ In `~/.tapes`. To share a rice, PR a `setup.sh` and `tape.toml` to [featured-tap
 <details>
 <summary><b>Something broke. What do I do?</b></summary>
 
-Update first (`tapes --version`), then re-run with `--logging` and [open an issue](https://github.com/futurekismo-oss/tapes/issues/new) or ask on the [Discord](https://discord.gg/TVjsGzFAur). A failed insert/eject leaves your original config untouched — worst case, delete `~/.config` and rename `~/.config.tapes` back to `~/.config`. Logs live at `~/.local/share/tapes/tapes.log` (usually it's a hook).
+Update first (`tapes --version`), then re-run with `--logging` and [open an issue](https://github.com/futurekismo-oss/tapes/issues/new) or ask on the [Discord](https://discord.gg/TVjsGzFAur). A failed insert/eject leaves your original config untouched which is the worst case scenario, delete `~/.config` and rename `~/.config.tapes` back to `~/.config`. Make sure to provide the logs at `~/.local/share/tapes/tapes.log` (usually it's a hook failure or state corruption).
 
 </details>
 
