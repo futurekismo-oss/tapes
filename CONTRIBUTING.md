@@ -1,6 +1,6 @@
 # Contributing to `tapes`
 
-First off: **thank you for contributing to `tapes`!**
+First off: **thank you wanting to contribute to `tapes`!**
 
 These guidelines are lenient in spirit, not a rigid checklist so follow the spirit not the wording. That said, if something breaks or gets hard to understand inituitively, I will request changes.
 
