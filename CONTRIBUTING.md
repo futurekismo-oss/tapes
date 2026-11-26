@@ -11,7 +11,7 @@ These guidelines are lenient in spirit, not a rigid checklist so follow the spir
 
 - **Keep `main.rs` as an orchestrator.** It should act as an entry point that delegates work to `cli`, `utils` or other files. Most errors should bubble up to `main.rs` unless a specific error needs local handling for safety.
 - **Respect module boundaries for helpers.** Keep helpers in the file where they are used by default. Move a helper into `util` (or `utils`) only when at least two files need it and the context makes sense.
-  - *Example:* Keep the `insert` helper in the `insert` command unless `install` needs it, whereas `get_tapes_data` fits in `utils` without question.
+  - *Example:* Keep the `insert` helper in the `insert` command unless `install` needs it, whereas `get_tapes_data` fits in `utils`.
 - **Extract large structs.** If a struct definition gets long, move it into its own file.
 
 - **Follow idiomatic Rust.** Standard Rust formatting and style are expected.
